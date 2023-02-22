@@ -5,16 +5,22 @@ import './button.css';
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+
+ interface IButton{
+  primary:any;
+   backgroundColor:string;
+    size:string;
+     label:string
+ }
+export const Button = (props:IButton) => {
+  const mode = props.primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={backgroundColor && { backgroundColor }}
-      {...props}
+      className={['storybook-button', `storybook-button--${props.size}`, mode].join(' ')}
+      style={props.backgroundColor && { backgroundColor:props.backgroundColor }}
     >
-      {label}
+      {props.label}
     </button>
   );
 };
